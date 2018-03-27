@@ -26,7 +26,7 @@
     <tr>
         <td>{{ ++$i }}</td>
         <td>{{ $item->title }}</td>
-        <td>{{ $item->description }}</td>
+        <td>{{ str_limit($item->description, $limit = 150, $end = '...') }}</td>
         <td>
             <a class="btn btn-info" href="{{ route('item.show',$item->id) }}">Show</a>
             <a class="btn btn-primary" href="{{ route('item.edit',$item->id) }}">Edit</a>

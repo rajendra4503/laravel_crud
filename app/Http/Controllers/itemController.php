@@ -13,9 +13,11 @@ class itemController extends Controller
     public function index(Request $request)
     {
 
-        $items = Item::orderBy('id','DESC')->paginate(5);
-        return view('item.index',compact('items'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+   
+
+
+        $items = Item::orderBy('id','DESC')->paginate(8);
+        return view('item.index',compact('items')) ->with('i', ($request->input('page', 1) - 1) * 8);
     }
 
     /**
@@ -38,7 +40,7 @@ class itemController extends Controller
     {
 
         $this->validate($request, [
-            'title' => 'required|unique:items|max:25',
+            'title' => 'required|max:25',
             'description' => 'required',
         ]);
         Item::create($request->all());
