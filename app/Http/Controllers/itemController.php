@@ -12,11 +12,8 @@ class itemController extends Controller
      */
     public function index(Request $request)
     {
-
-   
-
-
         $items = Item::orderBy('id','DESC')->paginate(8);
+        
         return view('item.index',compact('items')) ->with('i', ($request->input('page', 1) - 1) * 8);
     }
 
